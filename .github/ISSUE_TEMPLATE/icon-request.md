@@ -1,7 +1,7 @@
 ---
 name: Icon Request
 about: Request an Icon to be created
-title: ''
+title: "[REQUEST] "
 labels: Icon Request
 assignees: ''
 
