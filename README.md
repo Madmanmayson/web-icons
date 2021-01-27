@@ -13,6 +13,7 @@ An example declaration of the SVG in HTML would look as follows.
 `[path-to-file]` - the absolute path to the icon folder on your website (remove square brackets)
 
 `[icon-name]` - the name of the icon you wish to use, either found above or the name of the original file if you made your own stack (remove square brackets but make sure to keep the # symbol before it)
+Any styling you wish to do such as sizing or changing the fill color should be done in a CSS class and attached to the `<svg>` tag
 
 ## Creating your own Stack
 If you wish to create your own stacked SVG file rather then use a premade one found under [Releases](https://github.com/Madmanmayson/web-icons/releases), there are a couple ways you can get the SVGStacker found in this repository to use it yourself.
