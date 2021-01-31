@@ -67,6 +67,7 @@ namespace SVGStacker
             //Creating the XmlWriter w/out the xml declaration
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.OmitXmlDeclaration = true;
+            string filename = "symbol-defs-min.svg";
 
             Console.WriteLine("Would you like to minify the output file? (y/n)");
             Console.WriteLine("NOTE: This should only be done for deploying.");
@@ -74,8 +75,9 @@ namespace SVGStacker
             if (checkIndent.ToLower() == "n" || checkIndent.ToLower() == "no")
             {
                 settings.Indent = true;
+                filename = "symbol-defs.svg";
             }
-            XmlWriter writer = XmlWriter.Create("symbol-defs.svg", settings);
+            XmlWriter writer = XmlWriter.Create(filename, settings);
 
             //Creating the base SVG declaration with appropriate attributes. Includes <svg> and <defs>
             writer.WriteStartElement("svg", "http://www.w3.org/2000/svg");
