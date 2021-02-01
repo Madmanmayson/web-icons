@@ -25,7 +25,7 @@ NOTE: As of this moment the SVGStacker program is a bit buggy and finicky with t
 
 Once you have the program you can either run it on its own or supply the path to the folder containing the icons as an argument. For the best chance of success the path you provide should be an absolute path ending with the name of the folder that contains the icons (ex: `D:\web-icons\Icons` where Icons is a folder or directory that contains all of the icons)
 ```shell
-SVGStacker.exe <icon-folder-with-path>
+SVGStacker.exe [icon-folder-with-path]
 ```
 This will output a file called `symbol-defs.svg` in the same folder as the SVGStacker.exe file which you can then host on your website to access the icons.
 By making the file yourself you can choose to only include icons you want to use on your website in the Icons folder and the stacked file will only include those allowing for a smaller filesize overall. If you create it yourself the `iconname` used in the HTML tag above will be the same as the original SVG file's name without the extension.
