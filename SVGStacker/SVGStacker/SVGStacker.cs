@@ -98,36 +98,44 @@ namespace SVGStacker
                     writer.WriteAttributeString("id", Path.GetFileNameWithoutExtension(file));
                     writer.WriteAttributeString("viewBox", reader.ReadContentAsString());
 
-                    
-
                     //Getting the path data and copying it inside the symbol tag
-                    reader.Read();
+                    reader.MoveToElement();
+                    reader.ReadStartElement();
+                    if(reader.NodeType == XmlNodeType.Whitespace)
+                    {
+                        reader.Read();
+                    }
                     if (reader.Name != "g"){ //depending on the file, there might be a <g> tag we want to avoid
                         XmlReader inner = reader.ReadSubtree();
 
                         //duplicating all path elements by creating new nodes in the output
                         while (inner.Read())
                         {
-                            writer.WriteStartElement(inner.Name); 
-                            while (inner.MoveToNextAttribute())
+                            if (inner.NodeType != XmlNodeType.Whitespace)
                             {
-                                writer.WriteAttributeString(inner.Name, inner.Value);
+                                writer.WriteStartElement(inner.Name);
+                                while (inner.MoveToNextAttribute())
+                                {
+                                    writer.WriteAttributeString(inner.Name, inner.Value);
+                                }
+                                writer.WriteEndElement();
                             }
-                            writer.WriteEndElement();
                         }
-
                     } 
                     else
                     {
                         //duplicating all path elements by creating new nodes in the output
-                        while (reader.Read() && reader.Name != "g") //checking for closing </g> tag
+                        while (reader.Read()) //checking for closing </g> tag
                         {
-                            writer.WriteStartElement(reader.Name);
-                            while (reader.MoveToNextAttribute())
+                            if (reader.NodeType != XmlNodeType.Whitespace && reader.Name != "g")
                             {
-                                writer.WriteAttributeString(reader.Name, reader.Value);
+                                writer.WriteStartElement(reader.Name);
+                                while (reader.MoveToNextAttribute())
+                                {
+                                    writer.WriteAttributeString(reader.Name, reader.Value);
+                                }
+                                writer.WriteEndElement();
                             }
-                            writer.WriteEndElement();
                         }
                     }
 
