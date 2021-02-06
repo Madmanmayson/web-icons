@@ -127,7 +127,7 @@ namespace SVGStacker
                         //duplicating all path elements by creating new nodes in the output
                         while (reader.Read()) //checking for closing </g> tag
                         {
-                            if (reader.NodeType != XmlNodeType.Whitespace && reader.Name != "g")
+                            if (reader.NodeType != XmlNodeType.Whitespace && reader.Name != "g" && reader.Name != "svg")
                             {
                                 writer.WriteStartElement(reader.Name);
                                 while (reader.MoveToNextAttribute())
